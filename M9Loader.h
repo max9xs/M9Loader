@@ -14,9 +14,10 @@
     
     UILabel *labelTitle;
     
-    UIView *circleView1;
-    UIView *circleView2;
+    UIImageView *loaderIcon;
+   
 }
 -(id)initCreate;
+
 
 @end
