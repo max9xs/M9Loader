@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "M9Loader.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
+}
+-(IBAction)btnClicked:(id)sender
+{
+    
+    M9Loader *loader=[[M9Loader alloc] initCreate];
+    [self.view addSubview:loader];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
