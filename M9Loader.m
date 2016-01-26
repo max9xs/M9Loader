@@ -8,6 +8,9 @@
 
 #import "M9Loader.h"
 
+#define sizeMax 150
+#define spinnerSize 50
+
 @implementation M9Loader
 
 /*
@@ -35,14 +38,13 @@
         
         self.center=CGPointMake(widthOfScreen/2, heightOfscreen/2);
 
-        [self setUpAll];
         
         
         
         
         
         
-        loaderBgView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+        loaderBgView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, sizeMax, sizeMax)];
         [self addSubview:loaderBgView];
         loaderBgView.center=self.center;
         loaderBgView.backgroundColor=[UIColor whiteColor];
@@ -50,20 +52,20 @@
         loaderBgView.clipsToBounds=YES;
 
         
-        labelTitle=[[UILabel alloc] initWithFrame:CGRectMake(0, 140, 200, 30)];
+        labelTitle=[[UILabel alloc] initWithFrame:CGRectMake(0, sizeMax-40, sizeMax, 30)];
         [loaderBgView addSubview:labelTitle];
         labelTitle.textAlignment=NSTextAlignmentCenter;
         labelTitle.text=@"Loading..";
-        labelTitle.font=[UIFont systemFontOfSize:15 weight:0.1];
+        labelTitle.font=[UIFont systemFontOfSize:12 weight:0.1];
         
 
-        loaderIcon=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
+        loaderIcon=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, spinnerSize, spinnerSize)];
         [loaderBgView addSubview:loaderIcon];
         loaderIcon.image=[UIImage imageNamed:@"spinner1"];
-        loaderIcon.center=CGPointMake(100, 100-10);
+        loaderIcon.center=CGPointMake(sizeMax/2, sizeMax/2-10);
         
 
-              CABasicAnimation* spinAnimation = [CABasicAnimation
+        CABasicAnimation* spinAnimation = [CABasicAnimation
                                            animationWithKeyPath:@"transform.rotation"];
         spinAnimation.toValue = [NSNumber numberWithFloat:0];
         spinAnimation.fromValue = [NSNumber numberWithFloat:-6];
@@ -71,34 +73,14 @@
         spinAnimation.repeatCount =HUGE_VALF;
        // spinAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
-spinAnimation.additive=YES;
+        spinAnimation.additive=YES;
         [loaderIcon.layer addAnimation:spinAnimation forKey:@"spinAnimation1"];
 
-        /*{
-            CABasicAnimation* spinAnimation = [CABasicAnimation
-                                               animationWithKeyPath:@"transform.rotation"];
-            spinAnimation.toValue = [NSNumber numberWithFloat:0];
-            spinAnimation.fromValue = [NSNumber numberWithFloat:12];
-            spinAnimation.duration=1.2;
-            spinAnimation.repeatCount =HUGE_VALF;
-            spinAnimation.additive=YES;
-           spinAnimation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-spinAnimation.autoreverses=YES;
-            [circleView2.layer addAnimation:spinAnimation forKey:@"spinAnimation2"];
-
-        }
-*/
 
 
     }
     return self;
     
-}
--(void)setUpAll
-{
-    //        self.clipsToBounds=YES
-    
-    //self.backgroundColor=[UIColor grayColor];
 }
 
 
